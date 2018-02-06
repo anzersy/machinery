@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/RichardKnop/machinery/v1/common"
-	"github.com/RichardKnop/machinery/v1/config"
-	"github.com/RichardKnop/machinery/v1/log"
-	"github.com/RichardKnop/machinery/v1/tasks"
+	"github.com/anzersy/machinery/v1/common"
+	"github.com/anzersy/machinery/v1/config"
+	"github.com/anzersy/machinery/v1/log"
+	"github.com/anzersy/machinery/v1/tasks"
 	"github.com/garyburd/redigo/redis"
 	"gopkg.in/redsync.v1"
 )

@@ -8,10 +8,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/RichardKnop/machinery/v1/backends"
-	"github.com/RichardKnop/machinery/v1/log"
-	"github.com/RichardKnop/machinery/v1/retry"
-	"github.com/RichardKnop/machinery/v1/tasks"
+	"github.com/anzersy/machinery/v1/backends"
+	"github.com/anzersy/machinery/v1/log"
+	"github.com/anzersy/machinery/v1/retry"
+	"github.com/anzersy/machinery/v1/tasks"
 )
 
 // Worker represents a single worker process

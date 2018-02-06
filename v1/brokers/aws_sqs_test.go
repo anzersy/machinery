@@ -5,10 +5,10 @@ import (
 
 	"errors"
 
-	"github.com/RichardKnop/machinery/v1"
-	"github.com/RichardKnop/machinery/v1/brokers"
-	"github.com/RichardKnop/machinery/v1/config"
-	"github.com/RichardKnop/machinery/v1/retry"
+	"github.com/anzersy/machinery/v1"
+	"github.com/anzersy/machinery/v1/brokers"
+	"github.com/anzersy/machinery/v1/config"
+	"github.com/anzersy/machinery/v1/retry"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/sqs"
 	"github.com/stretchr/testify/assert"

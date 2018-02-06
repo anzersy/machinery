@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/RichardKnop/machinery/v1/tasks"
+	"github.com/anzersy/machinery/v1/tasks"
 )
 
 // ErrGroupNotFound ...

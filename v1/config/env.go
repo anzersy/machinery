@@ -3,7 +3,7 @@ package config
 import (
 	"time"
 
-	"github.com/RichardKnop/machinery/v1/log"
+	"github.com/anzersy/machinery/v1/log"
 	"github.com/kelseyhightower/envconfig"
 )
 

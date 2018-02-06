@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/RichardKnop/machinery/v1/config"
-	"github.com/RichardKnop/machinery/v1/log"
-	"github.com/RichardKnop/machinery/v1/tasks"
+	"github.com/anzersy/machinery/v1/config"
+	"github.com/anzersy/machinery/v1/log"
+	"github.com/anzersy/machinery/v1/tasks"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sqs"
