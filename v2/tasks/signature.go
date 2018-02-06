@@ -25,6 +25,9 @@ type Signature struct {
 	Name           string
 	RoutingKey     string
 	ETA            *time.Time
+	CreateTime     *time.Time
+	LastUpdateTime *time.Time
+	IPStr          string
 	GroupUUID      string
 	GroupTaskCount int
 	Args           []Arg
