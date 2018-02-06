@@ -114,7 +114,12 @@ func (b *MongodbBackend) TriggerChord(groupUUID string) (bool, error) {
 
 // SetStatePending updates task state to PENDING
 func (b *MongodbBackend) SetStatePending(signature *tasks.Signature) error {
-	update := bson.M{"state": tasks.StatePending}
+	update := bson.M{
+		"state":   tasks.StatePending,
+		"executerid": signature.ExecuterId,
+		"taskname": signature.TaskName,
+		"groupname": signature.GroupName,
+	}
 	return b.updateState(signature, update)
 }
 
