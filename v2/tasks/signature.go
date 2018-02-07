@@ -22,6 +22,9 @@ type Signature struct {
 	GroupName      string
 	TaskName       string
 	ExecuterId     string
+	JobType        string
+	IsSerial       string
+	SerialId       int
 	Name           string
 	RoutingKey     string
 	ETA            *time.Time
