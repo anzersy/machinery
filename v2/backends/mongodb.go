@@ -114,14 +114,15 @@ func (b *MongodbBackend) TriggerChord(groupUUID string) (bool, error) {
 
 // SetStatePending updates task state to PENDING
 func (b *MongodbBackend) SetStatePending(signature *tasks.Signature) error {
+	now := time.Now()
 	update := bson.M{
 		"state":   tasks.StatePending,
 		"executerid": signature.ExecuterId,
 		"taskname": signature.TaskName,
 		"groupname": signature.GroupName,
 		"ETA": signature.ETA,
-		"createtime": signature.CreateTime,
-		"lastupdatetime": signature.LastUpdateTime,
+		"createtime": &now,
+		"lastupdatetime": &now,
 		"ipstr": signature.IPStr,
 	}
 	return b.updateState(signature, update)
@@ -129,27 +130,30 @@ func (b *MongodbBackend) SetStatePending(signature *tasks.Signature) error {
 
 // SetStateReceived updates task state to RECEIVED
 func (b *MongodbBackend) SetStateReceived(signature *tasks.Signature) error {
+	now := time.Now()
 	update := bson.M{
 		"state": tasks.StateReceived,
-		"lastupdatetime": *time.Now(),
+		"lastupdatetime": &now,
 	}
 	return b.updateState(signature, update)
 }
 
 // SetStateStarted updates task state to STARTED
 func (b *MongodbBackend) SetStateStarted(signature *tasks.Signature) error {
+	now := time.Now()
 	update := bson.M{
 		"state": tasks.StateStarted,
-		"lastupdatetime": *time.Now(),
+		"lastupdatetime": &now,
 	}
 	return b.updateState(signature, update)
 }
 
 // SetStateRetry updates task state to RETRY
 func (b *MongodbBackend) SetStateRetry(signature *tasks.Signature) error {
+	now := time.Now()
 	update := bson.M{
 		"state": tasks.StateRetry,
-		"lastupdatetime": *time.Now(),
+		"lastupdatetime": &now,
 	}
 	return b.updateState(signature, update)
 }
@@ -158,6 +162,7 @@ func (b *MongodbBackend) SetStateRetry(signature *tasks.Signature) error {
 func (b *MongodbBackend) SetStateSuccess(signature *tasks.Signature, results []*tasks.TaskResult) error {
 	//edited by surendra tiwari
 	var err error
+	now := time.Now()
 	bsonResults := make([]bson.M, len(results))
 	for i, result := range results {
 		//to hold the json result
@@ -187,17 +192,18 @@ func (b *MongodbBackend) SetStateSuccess(signature *tasks.Signature, results []*
 	update := bson.M{
 		"state":   tasks.StateSuccess,
 		"results": bsonResults,
-		"lastupdatetime": *time.Now(),
+		"lastupdatetime": &now,
 	}
 	return b.updateState(signature, update)
 }
 
 // SetStateFailure updates task state to FAILURE
 func (b *MongodbBackend) SetStateFailure(signature *tasks.Signature, err string) error {
+	now := time.Now()
 	update := bson.M{
 		"state": tasks.StateFailure,
 		"error": err,
-		"lastupdatetime": *time.Now(),
+		"lastupdatetime": &now,
 	}
 	return b.updateState(signature, update)
 }
