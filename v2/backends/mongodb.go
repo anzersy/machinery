@@ -119,7 +119,7 @@ func (b *MongodbBackend) SetStatePending(signature *tasks.Signature) error {
 		"state":   tasks.StatePending,
 		"executerid": signature.ExecuterId,
 		"taskname": signature.TaskName,
-		"groupname": signature.GroupName,
+		"jobname": signature.JobName,
 		"ETA": signature.ETA,
 		"createtime": &now,
 		"lastupdatetime": &now,
@@ -128,6 +128,7 @@ func (b *MongodbBackend) SetStatePending(signature *tasks.Signature) error {
 		"isserial": signature.IsSerial,
 		"serialid": signature.SerialId,
 		"groupid": signature.GroupUUID,
+		"jobid": signature.JobUUID,
 		"args": signature.Args,
 	}
 	return b.updateState(signature, update)

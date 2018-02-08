@@ -19,7 +19,8 @@ type Headers map[string]interface{}
 // Signature represents a single task invocation
 type Signature struct {
 	UUID           string
-	GroupName      string
+	JobName        string
+	JobUUID        string
 	TaskName       string
 	ExecuterId     string
 	JobType        string
