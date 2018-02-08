@@ -8,6 +8,7 @@ import (
 
 // Chain creates a chain of tasks to be executed one after another
 type Chain struct {
+	GroupUUID string
 	Tasks []*Signature
 }
 
@@ -36,11 +37,17 @@ func (group *Group) GetUUIDs() []string {
 // NewChain creates a new chain of tasks to be processed one by one, passing
 // results unless task signatures are set to be immutable
 func NewChain(signatures ...*Signature) *Chain {
+
+	// Generate a group UUID
+	groupUUID := fmt.Sprintf("group_%v", uuid.NewV4())
+
 	// Auto generate task UUIDs if needed
 	for _, signature := range signatures {
 		if signature.UUID == "" {
 			signature.UUID = fmt.Sprintf("task_%v", uuid.NewV4())
 		}
+		signature.GroupUUID = groupUUID
+		signature.GroupTaskCount = len(signatures)
 	}
 
 	for i := len(signatures) - 1; i > 0; i-- {
@@ -49,7 +56,10 @@ func NewChain(signatures ...*Signature) *Chain {
 		}
 	}
 
-	chain := &Chain{Tasks: signatures}
+	chain := &Chain{
+		GroupUUID: groupUUID,
+		Tasks: signatures,
+	}
 
 	return chain
 }

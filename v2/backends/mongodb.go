@@ -128,6 +128,7 @@ func (b *MongodbBackend) SetStatePending(signature *tasks.Signature) error {
 		"isserial": signature.IsSerial,
 		"serialid": signature.SerialId,
 		"groupid": signature.GroupUUID,
+		"args": signature.Args,
 	}
 	return b.updateState(signature, update)
 }
