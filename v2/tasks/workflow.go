@@ -47,7 +47,6 @@ func NewChain(signatures ...*Signature) *Chain {
 			signature.UUID = fmt.Sprintf("task_%v", uuid.NewV4())
 		}
 		signature.GroupUUID = groupUUID
-		signature.GroupTaskCount = len(signatures)
 	}
 
 	for i := len(signatures) - 1; i > 0; i-- {
